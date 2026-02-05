@@ -2,7 +2,7 @@
 
 **Exemplo de uso:**
 ```bash
-python score.py --img caminho/para/imagem.jpg
+python image_score.py --img caminho/para/imagem.jpg --out imagem_saida.png
 ```
 
 ## Escopo e Finalidade
