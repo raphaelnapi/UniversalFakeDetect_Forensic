@@ -48,7 +48,7 @@ Esta extensão **não se destina** a:
 
 ## Scripts Forenses
 
-### `score_image.py`
+### `image_score.py`
 
 Script forense para **inferência em imagem única**.
 
@@ -56,4 +56,4 @@ Script forense para **inferência em imagem única**.
 - Carrega o modelo UFD/CLIP ViT-L/14 pré-treinado
 - Aplica pré-processamento padronizado à imagem
 - Calcula um score escalar no intervalo `[0, 1]`
-- Apresenta o resultado como **probabilidade estimada de geração por IA**
+- Apresenta o resultado como **probabilidade estimada de geração por IA** de cada patch 224x224 pixels da imagem
