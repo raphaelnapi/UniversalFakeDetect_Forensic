@@ -5,6 +5,8 @@
 python image_score.py --img caminho/para/imagem.jpg --out imagem_saida.png
 ```
 
+---
+
 ## Setup
 Recomenda-se instalar o miniconda para melhor controle de versões e compatibilidade de bibliotecas e recursos.
 Após instalação do miniconda:
@@ -29,6 +31,8 @@ Dependências no PyPI:
 ```bash
 pip install -r requirements.txt
 ```
+
+---
 
 ## Escopo e Finalidade
 
