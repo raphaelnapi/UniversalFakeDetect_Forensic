@@ -50,7 +50,6 @@ def preprocess_image(img_path: str, arch: str):
     stat_from = "imagenet" if arch.lower().startswith("imagenet") else "clip"
 
     transform = transforms.Compose([
-        #transforms.CenterCrop(224),
         transforms.ToTensor(),
         transforms.Normalize( mean=MEAN[stat_from], std=STD[stat_from] ),
     ])
