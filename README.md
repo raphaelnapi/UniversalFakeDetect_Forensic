@@ -163,6 +163,8 @@ options:
   --thres THRES  Threshold (detection sensibility) (default: 50)
 ```
 
+---
+
 ## Roadmap
 - Processar a área excluída a direita e abaixo devido os patches não terem 224x224 pixels.
 - Permitir escolha arbitrária da janela deslizante para extração dos patches, atualmente 224 pixels.
