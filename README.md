@@ -1,19 +1,22 @@
 # Extensão Forense — Universal Fake Detect (UFD)
 
+![Imagem de exemplo 1](samples/sample1.png)
+![Imagem de exemplo 2](samples/sample2.png)
+
 **Exemplo de uso:**
 ```bash
-python score.py --img caminho/para/imagem.jpg
+python image_score.py --img caminho/para/imagem.jpg --out imagem_saida.png
 ```
 
 ## Escopo e Finalidade
 
 Este repositório é um **fork** do projeto original **Universal Fake Detect (UFD)**.
-O código-fonte original e o arquivo `README.md` descrevem um uso **acadêmico e orientado a benchmarks**,
+O código-fonte original e o arquivo `README_UFD.md` descrevem um uso **acadêmico e orientado a benchmarks**,
 voltado à avaliação de desempenho de modelos de detecção de imagens sintéticas em conjuntos de dados.
 
-Este documento descreve **scripts adicionais com finalidade forense**, incluídos neste fork,
-destinados especificamente à **análise de imagem única** em contextos de **perícia digital** como
-o objetivo de **estimar a probabilidade** de uma imagem ter sido **gerada por IA**.
+Este documento descreve **script adicional com finalidade forense**, incluído neste fork (image_score.py),
+destinado especificamente à **análise de imagem única** em contextos de **perícia digital** com o objetivo
+de **estimar a probabilidade** de uma imagem ter sido **gerada por IA**.
 
 > **Importante:**  
 > Os scripts forenses aqui descritos realizam **inferência probabilística**.
@@ -48,7 +51,7 @@ Esta extensão **não se destina** a:
 
 ## Scripts Forenses
 
-### `score_image.py`
+### `image_score.py`
 
 Script forense para **inferência em imagem única**.
 
@@ -56,4 +59,4 @@ Script forense para **inferência em imagem única**.
 - Carrega o modelo UFD/CLIP ViT-L/14 pré-treinado
 - Aplica pré-processamento padronizado à imagem
 - Calcula um score escalar no intervalo `[0, 1]`
-- Apresenta o resultado como **probabilidade estimada de geração por IA**
+- Apresenta o resultado como **probabilidade estimada de geração por IA** de cada patch 224x224 pixels da imagem
