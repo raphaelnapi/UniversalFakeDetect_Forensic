@@ -62,12 +62,25 @@ Esta extensão **não se destina** a:
 
 ---
 
-## Visão Metodológica
+## Metodologia
 
 ### Modelo Utilizado
 - **Backbone:** CLIP ViT-L/14 (*frozen*)
 - **Classificador:** Modelo pré-treinado do Universal Fake Detect (UFD)
 - **Tipo de processamento:** Inferência probabilística em imagem única
+
+### Método
+O método empregado baseia-se em análise de representações latentes (embeddings) extraídas por um modelo de visão profunda do tipo Vision Transformer (ViT), especificamente o CLIP ViT-L/14, operando em modo frozen (sem ajuste de pesos).
+
+#### Segmentação em Patches (224×224)
+A imagem de entrada é previamente normalizada conforme o padrão do modelo, sendo então decomposta internamente em patches quadrados de 224×224 pixels, que constituem as unidades básicas de análise visual. Cada patch é tratado como um “token visual”, permitindo ao modelo capturar padrões locais de textura, borda, iluminação e estrutura.
+
+#### Extração e Análise de Embeddings
+Os patches são projetados em um espaço vetorial de alta dimensão por meio do encoder visual do CLIP. Esse processo gera embeddings semânticos que representam características estatísticas e estruturais da imagem, incluindo correlações espaciais e padrões visuais aprendidos durante o treinamento massivo do modelo.
+
+#### Classificação
+Os embeddings extraídos são então fornecidos a um classificador previamente treinado pelo Universal Fake Detect (UFD), responsável por estimar a probabilidade de a imagem apresentar características compatíveis com conteúdo sintético ou manipulado.
+O resultado final corresponde a uma inferência probabilística, calculada sem comparação direta com imagens de referência reais, sendo adequada para análise de imagem única.
 
 ---
 
@@ -135,3 +148,21 @@ Script forense para **inferência em imagem única**.
 2026-02-05 02:36:45,112 | INFO | Score (Model CLIP:ViT-L/14): 0.5310311913490295
 2026-02-05 02:36:45,112 | INFO | Estimated AI Generation Probability: 53.10%
 ```
+
+## Usage
+
+```bash
+usage: image_score.py [-h] [--img IMG] [--out OUT] [--arch ARCH] [--ckpt CKPT] [--thres THRES]
+
+options:
+  -h, --help     show this help message and exit
+  --img IMG      input image filepath (default: None)
+  --out OUT      output image filepath (default: out.png)
+  --arch ARCH    (default: CLIP:ViT/14)
+  --ckpt CKPT    path to the trained classifier weights (.pth)
+  --thres THRES  Threshold (detection sensibility) (default: 50)
+```
+
+## Roadmap
+- Processar a área excluída a direita e abaixo devido os patches não terem 224x224 pixels.
+- Permitir escolha arbitrária da janela deslizante para extração dos patches, atualmente 224 pixels.
